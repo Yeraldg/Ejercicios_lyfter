@@ -8,7 +8,7 @@ import json
 def load_json_file(file_path):
     with open(file_path, "r" , encoding='utf-8') as file:
         data = file.read()
-        reader = json.load(data)
+        reader = json.loads(data)
         return reader
     
 def get_pokemon_basic_info():
