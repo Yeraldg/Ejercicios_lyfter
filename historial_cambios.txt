@@ -1,0 +1,51 @@
+C:\Users\kojik\Desktop\Ejercicios_lyfter\Ejercicios_Lyfter>git log
+commit eab62f7ba03f12efc9509355ba188e84c5ecacfb (HEAD -> past-exercises, origin/past-exercises)
+Author: Yerald Mauricio Garcia Arguedas <yeralg220187@gmail.com>
+Date:   Tue Jul 28 19:41:14 2026 -0600
+
+    Corregir manejo de JSON y codigo duplicado en practica.py
+(que cambio:
+algunos errores puntuales en 2 archivos
+por que cambio:
+por peticion que me hicieron , pero mas que todo para que todo se vea mucho mas limpio)
+
+commit 82e2a2aa199650c894f51c58dbbaa6f05dfad304 (backup-main)
+Merge: 3871077 00585da
+Author: Yerald Mauricio Garcia Arguedas <yeralg220187@gmail.com>
+Date:   Thu Jul 23 17:43:19 2026 -0600
+
+    Merge branch 'main' of https://github.com/Yeraldg/Ejercicios_lyfter
+(Que cambio:
+Se realizó una combinación (merge) entre diferentes ramas del repositorio.
+
+Por que se hizo:
+Para unir los cambios existentes en las ramas y mantener el historial del proyecto sincronizado.)
+
+commit 38710779db1fc9c658962008c144ca3cf193f422
+Author: Yerald Mauricio Garcia Arguedas <yeralg220187@gmail.com>
+Date:   Thu Jul 23 17:07:45 2026 -0600
+
+    Agregar ejercicios desde IT Essentials hasta Python Básico
+(que cambio:
+se agregaron los archivos con los nombres por modulo
+por que cambio:
+para seguir el orden del ejercicio que me pidieron)
+
+
+commit 00585dadf4092082a8045183d24cc08f5bdc4ede (origin/main, main)
+Author: Yeraldg <yeralg220187@gmail.com>
+Date:   Tue Jul 21 19:26:51 2026 -0600
+
+    Rename project from 'lufter' to 'lyfter'
+(que cambio:
+una letra debido a un tipo
+por que cambio:
+para colocar el nombre correcto)
+
+commit be3d58828ffbf56fea52cb8c4bf81e23ed20e675
+Author: Yeraldg <yeralg220187@gmail.com>
+Date:   Tue Jul 21 19:26:13 2026 -0600
+(que cambio :
+aqui basicamente es como un registro el primer punto de guardado
+por que se hizo:
+para iniciar el control de versiones del proyecto Git)
