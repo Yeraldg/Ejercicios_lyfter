@@ -2,7 +2,7 @@ import csv
 
 def create_csv(file_path, data):
     with open(file_path, 'w', encoding='utf-8', newline='') as file:
-        headers = ["first_name" , "grade_section" , "spanish_grade" , "english_grade" , "social_studies_grade" , "science_grade"]
+        headers = ["full_name" , "grade_section" , "spanish_grade" , "english_grade" , "social_studies_grade" , "science_grade"]
         writer = csv.DictWriter(file, fieldnames=headers)
         writer.writeheader()
         writer.writerows(data)

@@ -4,16 +4,18 @@ def show_menu():
     print("3. Show top 3 students")
     print("4. Export CSV")
     print("5. Import CSV")
-    print("6. Exit")
+    print("6. Delete Student")
+    print("7. Exit")
+
 
     while True:
             try:
-                option = int(input("cuantos videojuegos desea ingresar: "))
-                if option <= 0 or option >= 7:
-                    print("por favor ingrese un numero positivo (mayor a 0)")
+                option = int(input("Please choose an option: "))
+                if option <= 0 or option >= 8:
+                    print("Please enter an option between 1 and 7")
                     continue
                 break
             except ValueError:
-                print("por favor utilice formato de numero")
+                print("Please enter a valid number")
 
     return option
