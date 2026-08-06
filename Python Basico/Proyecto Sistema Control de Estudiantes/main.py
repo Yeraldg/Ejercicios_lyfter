@@ -1,9 +1,14 @@
 from data import create_csv, read_csv
+from menu import show_menu
+from actions import create_student
 
 def main():
-    students = []
     file_path =  "student_database.csv"
-    create_csv(file_path, students)
-    read_csv(file_path)
+    students = []
+    while True:
+        option = show_menu()
+        if option == 1:
+            student = create_student()
+            students.append(student)
     
 main()

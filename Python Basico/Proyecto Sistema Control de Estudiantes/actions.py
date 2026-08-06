@@ -1,3 +1,4 @@
+from data import read_csv
 
 def get_student_name():
     while True:
@@ -87,3 +88,14 @@ def create_student():
         "science_grade" : get_student_science_grade()
     }
     return student
+
+def show_csv(file_path):
+    students = read_csv(file_path)
+    if not students:
+        print("There are no records created yet.")
+        return
+    for student in students:
+        print(student)
+
+
+
