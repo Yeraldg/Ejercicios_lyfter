@@ -80,7 +80,7 @@ def get_student_science_grade():
 
 def create_student():
     student = {
-        "name" : get_student_name(),
+        "full_name" : get_student_name(),
         "grade_section" : get_student_grade_section(),
         "spanish_grade" : get_student_spanish_grade(),
         "english_grade" : get_student_english_grade(),
@@ -96,6 +96,68 @@ def show_csv(file_path):
         return
     for student in students:
         print(student)
+        
+def calculate_students_average(file_path):
+    averages = []
+    students = read_csv(file_path)
+    for student in students:
+        name = student["full_name"]
+        spanish = int(student["spanish_grade"])
+        english = int(student["english_grade"])
+        social_studies = int(student["social_studies_grade"])
+        science = int(student["science_grade"])
+        student_average = (spanish + english + social_studies + science) / 4
+        student_info = {
+            "name" : name,
+            "average" : student_average
+        }
+        averages.append(student_info)
+    
+    return averages
 
+def top_3(averages):
+    top_students = sorted(
+    averages,
+    key=lambda student: student["average"],
+    reverse=True
+    )
+    top_3 = top_students[:3]
+    position = 1
+    for student in top_3:
+        print(f"{position}. {student['name']} - average: {student['average']}")
+        position += 1
+        
+def get_student_info():
+    name = get_student_name()
+    section = get_student_grade_section()
+    
+    return name, section
+    
+def student_exists(students, name, section):
+    found_student = None
+    for student in students:
+        if student["full_name"] == name and student["grade_section"] == section:
+            print(f"student found: {name}, {section}")
+            found_student = student
+            break
+    if found_student is None:
+        print("student not found.")
+            
+    return found_student
 
-
+def get_delete_confirmation():
+        while True:
+            answer = input("would you like to delete the student info(only yes/no): ").strip().upper()
+            if answer not in ("YES", "NO"):
+                print("please only yes/no answer")
+                continue
+            break
+                
+        return answer
+    
+def delete_student(found_student, students):
+    students.remove(found_student)
+        
+    print("student removed succesfully.")
+    
+    
