@@ -78,15 +78,20 @@ def get_student_science_grade():
             print("Please enter a valid number")
     return science_grade
 
-def create_student():
-    student = {
-        "full_name" : get_student_name(),
-        "grade_section" : get_student_grade_section(),
-        "spanish_grade" : get_student_spanish_grade(),
-        "english_grade" : get_student_english_grade(),
-        "social_studies_grade" : get_student_social_studies_grade(),
-        "science_grade" : get_student_science_grade()
-    }
+def create_student(students):
+    name, section = get_student_info()
+    if student_exists(students, name,section):
+        print("student already exist.")
+        return None
+    else:
+        student = {
+            "full_name" : name,
+            "grade_section" : section,
+            "spanish_grade" : get_student_spanish_grade(),
+            "english_grade" : get_student_english_grade(),
+            "social_studies_grade" : get_student_social_studies_grade(),
+            "science_grade" : get_student_science_grade()
+        }
     return student
 
 def show_csv(file_path):
@@ -160,4 +165,60 @@ def delete_student(found_student, students):
         
     print("student removed succesfully.")
     
+    
+def convert_student_info(file_path):
+    all_students = []
+    students = read_csv(file_path)
+    for student in students:
+        name = student["full_name"]
+        section = student["grade_section"]
+        spanish = int(student["spanish_grade"])
+        english = int(student["english_grade"])
+        social_studies = int(student["social_studies_grade"])
+        science = int(student["science_grade"])
+        student_info = {
+            "name" : name,
+            "section" : section,
+            "spanish" : spanish,
+            "english" : english,
+            "social_studies" : social_studies,
+            "science" : science 
+        }
+        all_students.append(student_info)
+    return all_students
+
+def find_failed_grades(all_students):
+    student_list = []
+    for student in all_students:
+        failed_grades = {}
+        if student["spanish"] < 60:
+            failed_grades["spanish"] = student["spanish"]
+        if student["english"] < 60:
+            failed_grades["english"] = student["english"]
+        if student["social_studies"] < 60:
+            failed_grades["social_studies"] = student["social_studies"]
+        if student["science"] < 60:
+            failed_grades["science"] = student["science"]
+        if failed_grades:
+            student = {
+                "name" : student["name"],
+                "section" : student["section"],
+                "failed_grades" : failed_grades
+            }
+            student_list.append(student)
+        
+    return student_list
+
+def show_failed_students(student_list):
+    if not student_list:
+        print("no students with failed grades")
+        return
+    for student in student_list:
+        name = student["name"]
+        section = student["section"]
+        print(f"Name: {name}")
+        print(f"Section: {section}")
+        for subject, grade in student["failed_grades"].items():
+            print(f"{subject}: {grade}")
+        print("-----------")
     

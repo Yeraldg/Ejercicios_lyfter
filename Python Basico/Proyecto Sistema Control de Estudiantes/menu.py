@@ -5,14 +5,15 @@ def show_menu():
     print("4. Export CSV")
     print("5. Import CSV")
     print("6. Delete Student")
-    print("7. Exit")
+    print("7. View failed student grades")
+    print("8. Exit")
 
 
     while True:
             try:
                 option = int(input("Please choose an option: "))
-                if option <= 0 or option >= 8:
-                    print("Please enter an option between 1 and 7")
+                if option <= 0 or option >= 9:
+                    print("Please enter an option between 1 and 8")
                     continue
                 break
             except ValueError:
