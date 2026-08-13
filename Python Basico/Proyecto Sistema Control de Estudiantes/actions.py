@@ -1,4 +1,3 @@
-from data import read_csv
 
 def get_student_name():
     while True:
@@ -94,17 +93,15 @@ def create_student(students):
         }
     return student
 
-def show_csv(file_path):
-    students = read_csv(file_path)
+def show_csv(students):
     if not students:
         print("There are no records created yet.")
         return
     for student in students:
         print(student)
         
-def calculate_students_average(file_path):
+def calculate_students_average(students):
     averages = []
-    students = read_csv(file_path)
     for student in students:
         name = student["full_name"]
         spanish = int(student["spanish_grade"])
@@ -119,6 +116,14 @@ def calculate_students_average(file_path):
         averages.append(student_info)
     
     return averages
+
+def calculate_general_average(averages):
+    total = 0
+    
+    for student in averages:
+        total += student["average"]
+    general_average = total / len(averages)
+    print (f"General average: {general_average}")
 
 def top_3(averages):
     top_students = sorted(
@@ -166,9 +171,8 @@ def delete_student(found_student, students):
     print("student removed succesfully.")
     
     
-def convert_student_info(file_path):
+def convert_student_info(students):
     all_students = []
-    students = read_csv(file_path)
     for student in students:
         name = student["full_name"]
         section = student["grade_section"]
