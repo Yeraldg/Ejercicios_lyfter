@@ -10,7 +10,7 @@ def main():
         if option == 1:
             student = create_student(students)
             if student:
-                students.append(students)
+                students.append(student)
                 create_csv(file_path, students)
                 print("Student added")
         elif option == 2:
