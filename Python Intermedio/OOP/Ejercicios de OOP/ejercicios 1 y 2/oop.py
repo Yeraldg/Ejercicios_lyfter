@@ -1,14 +1,15 @@
 #ejercicio 1
 
 class Circle:
-    radius =  20
+    def __init__(self, radius):
+        self.radius = radius
     
     def get_area(self):
         area = 3.14 *(self.radius ** 2)
         
         return area
     
-circle1 = Circle()
+circle1 = Circle(20)
 print(circle1.get_area())
 
 #ejercicio 2
