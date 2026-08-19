@@ -14,8 +14,9 @@ print(circle1.get_area())
 #ejercicio 2
 
 class Bus:
-    max_passengers = 10
-    passengers = []
+    def __init__(self):
+        self.max_passengers = 10
+        self.passengers = []
     def add_passenger(self, person):
 
         if len(self.passengers) < self.max_passengers:
@@ -36,7 +37,7 @@ class Person:
     def __init__(self, name):
         self.name = name
         
-def main():
+def create_bus():
     bus = Bus()
 
     person1 = Person("John")
@@ -46,5 +47,71 @@ def main():
     bus.add_passenger(person2)
     
     bus.remove_passenger(person1)
+    
+
+#ejercicio 4
+
+class Head:
+    pass
+
+class Hand:
+    pass
+
+class Feet:
+    pass
+
+class Arm:
+    def __init__(self, hand):
+        self.hand = hand
+        
+class Leg:
+    def __init__(self, feet):
+        self.feet = feet
+        
+class Torso:
+    def __init__(self, head, right_arm, left_arm, right_leg, left_leg):
+        self.head = head
+        self.right_arm = right_arm
+        self.left_arm = left_arm
+        self.right_leg = right_leg
+        self.left_leg = left_leg
+        
+class Human:
+    def __init__(self, torso):
+        self.torso = torso
+        
+def create_body_parts():
+    head = Head()
+    right_hand = Hand()
+    left_hand = Hand()
+    right_feet = Feet()
+    left_feet = Feet()
+
+    return head, right_hand, left_hand, right_feet, left_feet
+
+def assemble_body(head, right_hand, left_hand, right_feet, left_feet):
+    right_arm = Arm(right_hand)
+    left_arm = Arm(left_hand)
+    right_leg = Leg(right_feet)
+    left_leg = Leg(left_feet)
+    
+    return Torso( head, right_arm, left_arm, right_leg, left_leg)
+        
+def create_human():
+    head, right_hand, left_hand, right_feet, left_feet = create_body_parts()
+
+    torso = assemble_body( head, right_hand, left_hand, right_feet, left_feet)
+
+    human = Human(torso)
+
+    return human
+
+
+
+
+
+def main():
+    create_bus()
+    create_human()
     
 main()
