@@ -2,6 +2,8 @@
 
 class Rectangle:
     def __init__(self, width, height):
+        if width < 0 or height < 0:
+            raise ValueError("There is a negative value; values must be positive.")
         self.width = width
         self.height = height
         
@@ -21,14 +23,7 @@ def get_rectangle_values():
         try:
             width = int(input("please enter the width: ").strip())
             height = int(input("please enter the height: ").strip())
-            valid_values = True
-            for value in (width, height):
-                if value <= 0:
-                    print("please enter a digit greater than 0")
-                    valid_values = False
-                    break
-            if not valid_values:
-                continue
+            
             return width, height
         
         except ValueError:
@@ -88,8 +83,15 @@ class Inventory:
 
 
 def main():
-    width, height = get_rectangle_values()
-    rectangle = Rectangle(width, height)
+    while True:
+        width, height = get_rectangle_values()
+
+        try:
+            rectangle = Rectangle(width, height)
+            break
+        except ValueError as error:
+            print(error)
+
     area = rectangle.get_area()
     perimeter = rectangle.get_perimeter()
     print(f"the area is: {area}")
