@@ -32,22 +32,22 @@ class SavingsAccount(BankAccount):
 class Shape(ABC):
     
     @abstractmethod
-    def get_perimeter(self):
+    def calculate_perimeter(self):
             pass
     
     @abstractmethod
-    def get_area(self):
+    def calculate_area(self):
             pass
 
 class Circle(Shape):
     def __init__(self, radius):
         self.radius = radius
     
-    def get_perimeter(self):
+    def calculate_perimeter(self):
         perimeter = 2 * math.pi * self.radius
         return perimeter
     
-    def get_area(self):
+    def calculate_area(self):
         area = math.pi * self.radius**2
         return area
     
@@ -55,11 +55,11 @@ class Square(Shape):
     def __init__(self, side):
         self.side = side
     
-    def get_perimeter(self):
+    def calculate_perimeter(self):
         perimeter = 4 * self.side
         return perimeter
     
-    def get_area(self):
+    def calculate_area(self):
         area = self.side**2
         return area
     
@@ -68,11 +68,11 @@ class Rectangle(Shape):
         self.width = width
         self.height = height
     
-    def get_perimeter(self):
+    def calculate_perimeter(self):
         perimeter = 2 * (self.width + self.height)
         return perimeter
     
-    def get_area(self):
+    def calculate_area(self):
         area = self.width * self.height
         return area
 
@@ -120,22 +120,22 @@ def main():
     #ejercicio 2
     print("--------")
     circle = Circle(20)
-    area1 = circle.get_area()
-    perimeter1 = circle.get_perimeter()
+    area1 = circle.calculate_area()
+    perimeter1 = circle.calculate_perimeter()
     print("Circle info: ")
     print(f"the area is: {area1}")
     print(f"the perimeter is: {perimeter1}")
     
     square = Square(10)
-    area2 = square.get_area()
-    perimeter2 = square.get_perimeter()
+    area2 = square.calculate_area()
+    perimeter2 = square.calculate_perimeter()
     print("Square info: ")
     print(f"the area is: {area2}")
     print(f"the perimeter is: {perimeter2}")
         
     rectangle = Rectangle(20, 30)
-    area3 = rectangle.get_area()
-    perimeter3 = rectangle.get_perimeter()
+    area3 = rectangle.calculate_area()
+    perimeter3 = rectangle.calculate_perimeter()
     print("Rectangle info: ")
     print(f"the area is: {area3}")
     print(f"the perimeter is: {perimeter3}")
