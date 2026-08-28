@@ -61,6 +61,41 @@ class RegularUser(User):
             return True
         else:
             return False
+        
+#ejercicio 3
+
+class Vehicle:
+    def __init__(self, brand, year):
+        self._brand = brand
+        self._year = year
+        
+    @property
+    def brand(self):
+        return self._brand
+    
+    @property
+    def year(self):
+        return self._year
+    
+    def get_info(self):
+        return f"{self._brand}, {self._year}"
+    
+class Car(Vehicle):
+    def __init__(self,brand, year, model):
+        super().__init__(brand, year)
+        self.model = model
+        
+    def get_info(self):
+        return f"{self._brand}, {self._year}, {self.model}."
+    
+class Motorcycle(Vehicle):
+    def __init__(self,brand, year, type):
+        super().__init__(brand, year)
+        self.type = type
+        
+    def get_info(self):
+        return f"{self._brand}, {self._year}, {self.type}."
+        
     
 def main():
     #ejercicio 1
@@ -86,5 +121,11 @@ def main():
     print(user2.has_permission("delete"))
     print(user2.has_permission("read"))
     
+    #ejercicio 3
+    vehicle1 = Car("Toyota", 2020, "Corolla")
+    vehicle2 = Motorcycle("Yamaha", 2022, "Sport")
+    print("-----------")
+    print(vehicle1.get_info())
+    print(vehicle2.get_info())
+    
 main()
-        
