@@ -89,12 +89,12 @@ class Car(Vehicle):
         return f"{self._brand}, {self._year}, {self.model}."
     
 class Motorcycle(Vehicle):
-    def __init__(self,brand, year, type):
+    def __init__(self,brand, year, moto_type):
         super().__init__(brand, year)
-        self.type = type
+        self.moto_type = moto_type
         
     def get_info(self):
-        return f"{self._brand}, {self._year}, {self.type}."
+        return f"{self._brand}, {self._year}, {self.moto_type}."
         
     
 def main():
