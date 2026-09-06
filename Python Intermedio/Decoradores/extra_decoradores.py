@@ -34,7 +34,7 @@ def view_profile():
 def log_call(function):
     def wrapper (*args, **kwargs):
         result = function(*args, **kwargs)
-        print(f"func: {function.__name__} - arguements: {args} - {datetime.now()} - Result: {result}")
+        print(f"func: {function.__name__} - arguments: {', '.join(str(arg) for arg in args)} - {datetime.now()} - Result: {result}")
         return result
     return wrapper
 
@@ -68,7 +68,7 @@ def main():
         print(error)
         
     #ejercicio 3
-    print(multiply(3, 4))
+    print(f"Result: {multiply(3, 4)}")
 
 
 main()
