@@ -179,9 +179,7 @@ def get_list_amount():
         try:
             list_amount = input("how many numbers should the list have?: ")
             if not list_amount.isdigit():
-                raise ValueError("please use numerical format only")
-            if int(list_amount) == 0:
-                raise ValueError("the list can not be empty")
+                raise ValueError("please use positive numerical format only")
             break
         except ValueError as error:
             print(error)
@@ -194,28 +192,54 @@ def get_list_to_sort():
     while counter <= elements:
         try:
             element_to_sort = input(f"please enter the {counter} number: ")
-            if not element_to_sort.lstrip("-").isdigit():
-                raise ValueError("please use numerical format only")
-            element_to_sort = int(element_to_sort)
+            try:
+                element_to_sort= int(element_to_sort)
+            except ValueError:
+                try:
+                    element_to_sort = float(element_to_sort)
+                except ValueError:
+                    pass
+            
             list_to_sort.append(element_to_sort)
             counter += 1
         except ValueError as error:
             print(error)
     return list_to_sort
 
-def bubble_sort(list_to_sort):
-    for outer_index in range(0, len(list_to_sort) -1):
+def validated_bubble_sort(list_to_sort):
+    valid_list = list_to_sort
+    final_list = []
+    try:
+        if not valid_list:
+            raise ValueError("the list is empty.")
+        for element in valid_list:
+            if not (type(element) is int or type(element) is float):
+                print(f"list provided: {list_to_sort}")
+                raise ValueError ("unable to sort list due to non numerial elements")
+    except ValueError as error:
+            print(error)
+            return
+    for element in valid_list:
+        final_list.append(element)
+    return final_list
+                
+            
+        
+    
+
+def bubble_sort(final_list):
+    for outer_index in range(0, len(final_list) -1):
         avoid_to_repeat = False
-        for index in range(0, len(list_to_sort) -1):
-                current_element = list_to_sort[index]
-                next_element = list_to_sort[index +1]
+        for index in range(0, len(final_list) -1):
+                current_element = final_list[index]
+                next_element = final_list[index +1]
                 if current_element > next_element:
-                    list_to_sort[index] = next_element
-                    list_to_sort[index +1] = current_element 
+                    final_list[index] = next_element
+                    final_list[index +1] = current_element 
                     avoid_to_repeat = True
         if not avoid_to_repeat:
-            return list_to_sort
-    return list_to_sort
+            return final_list
+    return final_list
     
     
 def main():
@@ -248,6 +272,8 @@ def main():
     print("Swaps: ", swaps)
     print("------------")
     list_to_sort = get_list_to_sort()
-    sorted_list = bubble_sort(list_to_sort)
-    print(f"the sorted list is: {sorted_list}")
+    valid_list = validated_bubble_sort(list_to_sort)
+    if valid_list:
+        sorted_list =bubble_sort(valid_list)
+        print(f"the sorted list is: {sorted_list}")
 main()
