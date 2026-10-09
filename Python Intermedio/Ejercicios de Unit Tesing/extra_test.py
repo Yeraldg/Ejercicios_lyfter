@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import mock_open, patch 
 #ejercicio 1
 
-def sum(a, b):
+def add(a, b):
     return a + b
     
 def average(a, b):
@@ -13,11 +13,15 @@ def multiply (a, b):
 
 class Test_numbers(unittest.TestCase):
     def test_sum_positive(self):
-        self.assertEqual(sum(5, 3), 8)
+        self.assertEqual(add(5, 3), 8)
     def test_sum_negative(self):
-        self.assertEqual(sum(-5, -3), -8)
+        self.assertEqual(add(-5, -3), -8)
     def test_sum_zero(self):
-        self.assertEqual(sum(0, 0), 0)
+        self.assertEqual(add(0, 0), 0)
+    def test_average(self):
+        self.assertEqual(average(10, 20), 15)
+    def test_multiply(self):
+        self.assertEqual(multiply(4, 5), 20)
         
     #ejercicio 2
     def test_divide(self):
