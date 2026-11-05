@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 Python Basico/Proyecto Sistema Control de Estudiantes/student_database.csv
 Python Basico/Proyecto Sistema Control de Estudiantes/students_export.csv
+.venv/
+ven/
